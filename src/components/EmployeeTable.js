@@ -31,19 +31,23 @@ const EmployeeTable = () => {
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
   // Change page
-  const nextPage = () => {
+  const handleIncrement = () => {
     if (currentPage < Math.ceil(data.length / itemsPerPage)) {
-      setCurrentPage(currentPage + 1);
+      setCurrentPage((page) => page + 1);
       console.log(`Next Page: ${currentPage + 1}`);
     }
   };
 
-  const prevPage = () => {
+  const handleDecrement = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      setCurrentPage((page) => page - 1);
       console.log(`Previous Page: ${currentPage - 1}`);
     }
   };
+
+  useEffect(() => {
+    console.log(`Current Page: ${currentPage}`);
+  }, [currentPage]);
 
   return (
     <div>
@@ -71,11 +75,11 @@ const EmployeeTable = () => {
             </tbody>
           </table>
           <div className="pagination-buttons">
-            <button onClick={prevPage} disabled={currentPage === 1}>
+            <button onClick={handleDecrement}>
               Previous
             </button>
             <span>Page {currentPage}</span>
-            <button onClick={nextPage} disabled={currentPage === Math.ceil(data.length / itemsPerPage)}>
+            <button onClick={handleIncrement}>
               Next
             </button>
           </div>
