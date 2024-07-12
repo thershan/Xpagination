@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './EmployeeTable.css'; // Import the CSS file
+import './EmployeeTable.css';
 
 const EmployeeTable = () => {
   const [data, setData] = useState([]);
@@ -17,6 +17,7 @@ const EmployeeTable = () => {
         const result = await response.json();
         setData(result);
       } catch (error) {
+        alert('Failed to fetch data'); // Display an alert message on failed data fetch
         setError(error.message);
       }
     };
@@ -50,6 +51,7 @@ const EmployeeTable = () => {
           <table>
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
@@ -58,6 +60,7 @@ const EmployeeTable = () => {
             <tbody>
               {currentItems.map((item) => (
                 <tr key={item.id}>
+                  <td>{item.id}</td>
                   <td>{item.name}</td>
                   <td>{item.email}</td>
                   <td>{item.role}</td>
