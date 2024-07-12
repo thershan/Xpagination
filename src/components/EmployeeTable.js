@@ -34,12 +34,14 @@ const EmployeeTable = () => {
   const nextPage = () => {
     if (currentPage < Math.ceil(data.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
+      console.log(`Next Page: ${currentPage + 1}`);
     }
   };
 
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
+      console.log(`Previous Page: ${currentPage - 1}`);
     }
   };
 
